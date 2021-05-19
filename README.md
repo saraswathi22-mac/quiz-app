@@ -1,1 +1,1 @@
-# react-to-do-2
+# React Django Task Manager
