@@ -1,1 +1,1 @@
-# django-important-links
+# quiz-app
