@@ -1,11 +1,23 @@
-import { TextField, MenuItem } from "@mui/material";
+import { TextField, MenuItem, Button } from "@mui/material";
 import { useState } from "react";
 import "./Home.css";
 import Categories from "../../DB/Categories";
+import { useNavigate } from "react-router-dom";
 
 const Home = ({ name, setName, fetchQuestions }) => {
   const [category, setCategory] = useState("");
   const [difficulty, setDifficulty] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleSubmit = () => {
+    if (!category || !difficulty || !name) {
+      return;
+    } else {
+      fetchQuestions(category, difficulty);
+      navigate("/quiz");
+    }
+  };
 
   return (
     <div className="content">
@@ -52,6 +64,14 @@ const Home = ({ name, setName, fetchQuestions }) => {
               Hard
             </MenuItem>
           </TextField>
+          <Button
+            variant="contained"
+            color="secondary"
+            size="large"
+            onClick={handleSubmit}
+          >
+            Start Quiz
+          </Button>
         </div>
       </div>
     </div>

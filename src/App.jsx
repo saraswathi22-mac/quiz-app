@@ -7,7 +7,6 @@ import { useFetchQuestions } from "./hooks/useFetchQuestions";
 
 function App() {
   const [name, setName] = useState();
-  const fetchQuestions = useFetchQuestions("", "");
   return (
     <Router>
       <Header />
@@ -18,7 +17,7 @@ function App() {
             <Home
               name={name}
               setName={setName}
-              fetchQuestions={fetchQuestions}
+              fetchQuestions={useFetchQuestions}
             />
           }
         />
