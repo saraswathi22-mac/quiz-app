@@ -8,6 +8,6 @@ export const useFetchQuestions = async (category = "", difficulty = "") => {
       category && `&category=${category}`
     }${difficulty && `&difficulty=${difficulty}`}&type=multiple`
   );
-  setQuestions(data);
+  setQuestions(data.results);
   return questions;
 };
