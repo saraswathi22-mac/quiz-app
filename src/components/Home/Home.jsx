@@ -3,17 +3,21 @@ import { useState } from "react";
 import "./Home.css";
 import Categories from "../../DB/Categories";
 import { useNavigate } from "react-router-dom";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 const Home = ({ name, setName, fetchQuestions }) => {
   const [category, setCategory] = useState("");
   const [difficulty, setDifficulty] = useState("");
+  const [error, setError] = useState(false);
 
   const navigate = useNavigate();
 
   const handleSubmit = () => {
     if (!category || !difficulty || !name) {
+      setError(true);
       return;
     } else {
+      setError(false);
       fetchQuestions(category, difficulty);
       navigate("/quiz");
     }
@@ -26,6 +30,7 @@ const Home = ({ name, setName, fetchQuestions }) => {
           Please fill the details to start the quiz
         </span>
         <div className="settings__select">
+          {error && <ErrorMessage>Please fill all the fields.</ErrorMessage>}
           <TextField
             style={{ marginBottom: 25 }}
             label="Enter Your Name"
