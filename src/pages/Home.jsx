@@ -3,7 +3,6 @@ import { useState } from "react";
 import Categories from "../DB/Categories";
 import { useNavigate } from "react-router-dom";
 import ErrorMessage from "../components/ErrorMessage";
-import "./Home.css";
 
 const Home = ({ name, setName, fetchQuestions }) => {
   const [category, setCategory] = useState("");
