@@ -5,6 +5,7 @@ import Quiz from "./pages/Quiz";
 import Header from "./components/Header";
 import axios from "axios";
 import Result from "./pages/Result";
+import RulesAndSelection from "./pages/RulesAndSelection";
 
 function App() {
   const [questions, setQuestions] = useState();
@@ -31,6 +32,14 @@ function App() {
             <Home
               name={name}
               setName={setName}
+            />
+          }
+        />
+        <Route
+          path="/rules-and-selection"
+          element={
+            <RulesAndSelection
+              name={name}
               fetchQuestions={fetchQuestions}
             />
           }
