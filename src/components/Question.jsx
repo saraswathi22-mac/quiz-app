@@ -51,7 +51,7 @@ const Question = ({
     <div className="flex flex-col w-full items-center">
       <h1>Question {currQues + 1} :</h1>
       <div className="flex flex-col items-center justify-around p-5 min-h-[350px] w-[95%] mt-2.5 border-solid border-4 border-slate-400">
-        <h2>{questions[currQues].question}</h2>
+        <h2>{questions[currQues]?.question}</h2>
         <div className="flex w-full items-center justify-around flex-1 flex-wrap m-4">
           {error && <ErrorMessage>{error}</ErrorMessage>}
           {options &&
