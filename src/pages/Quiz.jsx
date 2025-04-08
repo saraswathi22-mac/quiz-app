@@ -2,7 +2,7 @@ import { CircularProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import Question from "../components/Question";
 
-const Quiz = ({ name, questions, score, setScore, setQuestions }) => {
+const Quiz = ({ questions, score, setScore, setQuestions }) => {
   const [options, setOptions] = useState();
   const [currQues, setCurrQues] = useState(0);
 
@@ -22,9 +22,7 @@ const Quiz = ({ name, questions, score, setScore, setQuestions }) => {
 
   return (
     <div className="flex flex-col items-center font-sans">
-      {/* <span className="border-solid border-4 rounded border-slate-600 shadow-lg shadow-slate-500 text-2xl py-2 px-4"> */}
-      Welcome, {name}
-      {/* </span> */}
+      
       {questions ? (
         <>
           <div className="w-full flex justify-between uppercase m-2.5">

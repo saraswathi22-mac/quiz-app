@@ -4,7 +4,7 @@ import Categories from "../DB/Categories";
 import { useNavigate } from "react-router-dom";
 import ErrorMessage from "../components/ErrorMessage";
 
-const RulesAndSelection = ({ name, setName, fetchQuestions }) => {
+const RulesAndSelection = ({ name, fetchQuestions }) => {
   const [category, setCategory] = useState("");
   const [difficulty, setDifficulty] = useState("");
   const [error, setError] = useState(false);
