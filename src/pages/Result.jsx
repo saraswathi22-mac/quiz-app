@@ -13,7 +13,9 @@ const Result = ({ name, score }) => {
 
   return (
     <div className="flex flex-col justify-center text-center h-[60vh]">
-      <span className="text-bold text-3xl">Final Score : {score}</span>
+      <span className="text-bold text-3xl">
+        {name}, your score is {score}
+      </span>
       <Button
         variant="contained"
         color="secondary"
@@ -21,7 +23,7 @@ const Result = ({ name, score }) => {
         className="self-center"
         href="/"
       >
-        Go to homepage
+        Back to Home
       </Button>
     </div>
   );
