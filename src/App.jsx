@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Quiz from "./pages/Quiz";
-import Header from "./components/Header";
 import axios from "axios";
 import Result from "./pages/Result";
 import RulesAndSelection from "./pages/RulesAndSelection";
@@ -24,24 +23,12 @@ function App() {
 
   return (
     <Router>
-      <Header />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Home
-              name={name}
-              setName={setName}
-            />
-          }
-        />
+        <Route path="/" element={<Home name={name} setName={setName} />} />
         <Route
           path="/rules-and-selection"
           element={
-            <RulesAndSelection
-              name={name}
-              fetchQuestions={fetchQuestions}
-            />
+            <RulesAndSelection name={name} fetchQuestions={fetchQuestions} />
           }
         />
         <Route
