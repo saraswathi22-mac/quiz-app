@@ -1,4 +1,4 @@
-import { TextField, MenuItem, Button } from "@mui/material";
+import { TextField, Button } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ErrorMessage from "../components/ErrorMessage";
@@ -20,34 +20,37 @@ const Home = ({ name, setName }) => {
   };
 
   return (
-    <>
+    <div className="p-16">
       <Header />
 
       <div className="flex justify-around">
         <div className="flex flex-col items-center p-2.5 w-[45%] font-light font-serif">
-          <span className="text-2xl">Play to gain knowledge and have fun!</span>
+          <img src="quiz-main.png" style={{ width: "80%" }} />
+          <span className="text-xl">Test your knowledge with Quizzes</span>
+
           <div className="flex flex-col justify-evenly w-full text-left flex-0.8 p-5">
             {error && (
               <ErrorMessage>Please enter your name to proceed.</ErrorMessage>
             )}
             <TextField
-              style={{ marginBottom: 25 }}
+              style={{ marginBottom: 25, marginTop: 25 }}
               label="Enter Your Name"
               variant="outlined"
               onChange={(e) => setName(e.target.value)}
             />
           </div>
+
           <Button
             variant="contained"
-            color="secondary"
+            color="primary"
             size="large"
             onClick={handleSubmit}
           >
-            Ready to test your knowledge?
+            Get Started
           </Button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
