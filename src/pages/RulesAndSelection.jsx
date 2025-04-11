@@ -1,8 +1,10 @@
 import { TextField, MenuItem, Button } from "@mui/material";
 import { useState } from "react";
-import Categories from "../DB/Categories";
+import { quizCategories } from "../constants/quizCategories";
 import { useNavigate } from "react-router-dom";
 import ErrorMessage from "../components/ErrorMessage";
+import Card from "../components/Card";
+import { difficultyLevels } from "../constants/difficultyLevels";
 
 const RulesAndSelection = ({ name, fetchQuestions }) => {
   const [category, setCategory] = useState("");
@@ -12,7 +14,7 @@ const RulesAndSelection = ({ name, fetchQuestions }) => {
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-    if (!category || !difficulty || !name) {
+    if (!category || !difficulty) {
       setError(true);
       return;
     } else {
@@ -24,16 +26,22 @@ const RulesAndSelection = ({ name, fetchQuestions }) => {
 
   return (
     <div className="flex justify-around">
-      <div className="flex flex-col items-center p-2.5 w-[45%] font-light font-serif">
-        <span className="text-2xl">
-          Hello, {name}
+      <div className="flex flex-col items-center m-5 font-light font-serif">
+        <span className="text-2xl mb-3">
+          Welcome, <span className="font-bold text-3xl">{name}</span> !
         </span>
-        <span className="text-2xl">
-          Rules to play the quiz:
-        </span>
-        <div className="flex flex-col justify-evenly w-full text-left flex-0.8 p-5">
+
+        <span className="text-xl font-bold">Game On! Here’s How to Play:</span>
+
+        <div className="w-[80%]">
+          <Card />
+        </div>
+
+        <div className="flex flex-col justify-evenly text-left p-10 w-[60%]">
           {error && <ErrorMessage>Please fill all the fields.</ErrorMessage>}
-          
+          <span className="mb-5 text-xl font-bold">
+            Which one will you conquer today?
+          </span>
           <TextField
             select
             label="Select Category"
@@ -41,8 +49,9 @@ const RulesAndSelection = ({ name, fetchQuestions }) => {
             onChange={(e) => setCategory(e.target.value)}
             variant="outlined"
             style={{ marginBottom: 30 }}
+            autoFocus
           >
-            {Categories.map((item) => (
+            {quizCategories.map((item) => (
               <MenuItem key={item.category} value={item.value}>
                 {item.category}
               </MenuItem>
@@ -50,29 +59,26 @@ const RulesAndSelection = ({ name, fetchQuestions }) => {
           </TextField>
           <TextField
             select
-            label="Select Difficulty"
+            label="Select Difficulty Level"
             value={difficulty}
             onChange={(e) => setDifficulty(e.target.value)}
             variant="outlined"
             style={{ marginBottom: 30 }}
           >
-            <MenuItem key="Easy" value="easy">
-              Easy
-            </MenuItem>
-            <MenuItem key="Medium" value="medium">
-              Medium
-            </MenuItem>
-            <MenuItem key="Hard" value="hard">
-              Hard
-            </MenuItem>
+            {difficultyLevels.map((level) => (
+              <MenuItem key={level.value} value={level.value}>
+                {level.label}
+              </MenuItem>
+            ))}
           </TextField>
           <Button
             variant="contained"
             color="secondary"
             size="large"
             onClick={handleSubmit}
+            className="w-[50%] self-center"
           >
-            Start Quiz
+            Let's Go
           </Button>
         </div>
       </div>
