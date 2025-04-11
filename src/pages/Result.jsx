@@ -11,31 +11,28 @@ const Result = ({ name, score }) => {
     }
   }, [name, navigate]);
 
+  const getMessage = () => {
+    if (score === 10)
+      return `Boom! Perfect Score, ${name} – You’re unstoppable!`;
+    if (score > 6) return `You're doing amazing, ${name}. Keep shining!`;
+    if (score > 3) return `Almost there, ${name} — let's push it up a notch!`;
+    return `Better luck next time, ${name}.`;
+  };
+
   return (
     <div className="flex flex-col justify-center items-center text-center h-[60vh]">
       <span className="text-bold text-3xl mb-5">Your score:</span>
-      <div className="flex h-32 w-32 items-center justify-center rounded-full bg-cyan-300 text-white text-5xl">
-        <div className="flex h-28 w-28 items-center justify-center rounded-full bg-cyan-400">
-          <div className="flex h-24 w-24 items-center justify-center rounded-full bg-cyan-500">
-            <p>{score} </p>
-          </div>
-        </div>
+      <div className="flex items-center justify-center w-32 h-32 rounded-full bg-gradient-to-tr from-cyan-400 to-cyan-600 border-2 border-gray-300 text-white text-5xl font-bold shadow-lg">
+        {score}
       </div>
-      <div className="mt-5 mb-10 text-2xl text-gray-700">
-        {(score === 10)
-          ? `Boom! Perfect Score, ${name} – You’re unstoppable!`
-          : (score > 6)
-          ? `You're doing amazing, ${name}. Keep shining!.`
-          : (score > 3)
-          ? `Almost there, ${name} — let's push it up a notch!.`
-          : `Better luck next time ${name}.`}
-      </div>
+
+      <div className="mt-5 mb-10 text-2xl text-gray-700">{getMessage()}</div>
       <Button
         variant="contained"
         color="primary"
         size="large"
         className="self-center"
-        href="/"
+        onClick={() => navigate("/")}
       >
         Back to Home
       </Button>

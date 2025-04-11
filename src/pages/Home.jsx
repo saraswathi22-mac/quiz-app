@@ -25,10 +25,14 @@ const Home = ({ name, setName }) => {
 
       <div className="flex justify-around">
         <div className="flex flex-col items-center p-2.5 w-[45%] font-light font-serif">
-          <img src="quiz-main.png" style={{ width: "80%" }} />
+          <img
+            src="quiz-main.png"
+            className="w-4/5 mb-4"
+            alt="Quiz Illustration"
+          />
           <span className="text-xl">Test your knowledge with Quizzes</span>
 
-          <div className="flex flex-col justify-evenly w-full text-left flex-0.8 p-5">
+          <div className="flex flex-col justify-evenly w-full text-left p-5">
             {error && (
               <ErrorMessage>Please enter your name to proceed.</ErrorMessage>
             )}
@@ -37,6 +41,7 @@ const Home = ({ name, setName }) => {
               label="Enter Your Name"
               variant="outlined"
               onChange={(e) => setName(e.target.value)}
+              autoFocus
             />
           </div>
 
