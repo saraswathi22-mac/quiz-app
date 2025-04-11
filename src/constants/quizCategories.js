@@ -1,4 +1,4 @@
-const Categories = [
+export const quizCategories = [
   {
     category: "General Knowledge",
     value: 9,
@@ -20,5 +20,3 @@ const Categories = [
   { category: "Gadgets", value: 30 },
   { category: "Cartoon and Animations", value: 32 },
 ];
-
-export default Categories;
