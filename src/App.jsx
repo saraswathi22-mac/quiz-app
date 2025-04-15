@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Quiz from "./pages/Quiz";
 import axios from "axios";
 import Result from "./pages/Result";
-import RulesAndSelection from "./pages/RulesAndSelection";
+import QuizSetupForm from "./pages/QuizSetupForm";
 
 function App() {
   const [questions, setQuestions] = useState();
@@ -26,9 +26,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home name={name} setName={setName} />} />
         <Route
-          path="/rules-and-selection"
+          path="/quiz-setup-form"
           element={
-            <RulesAndSelection name={name} fetchQuestions={fetchQuestions} />
+            <QuizSetupForm name={name} fetchQuestions={fetchQuestions} />
           }
         />
         <Route
