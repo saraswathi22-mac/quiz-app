@@ -1,22 +1,28 @@
 import { TextField, Button } from "@mui/material";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ErrorMessage from "../components/ErrorMessage";
+import { useEffect } from "react";
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
 import Header from "../components/Header";
 
 const Home = ({ name, setName }) => {
-  const [error, setError] = useState(false);
-
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
-    if (!name) {
-      setError(true);
-      return;
-    } else {
-      setError(false);
-      navigate("/rules-and-selection");
+  useEffect(() => {
+    const storedName = localStorage.getItem("quizName");
+    if (storedName) {
+      setName(storedName);
     }
+  }, [setName]);
+
+  const validationSchema = Yup.object({
+    name: Yup.string().required("Please enter your name to proceed."),
+  });
+
+  const handleSubmit = (values) => {
+    setName(values.name);
+    localStorage.setItem("quizName", values.name);
+    navigate("/quiz-setup-form");
   };
 
   return (
@@ -32,27 +38,38 @@ const Home = ({ name, setName }) => {
           />
           <span className="text-xl">Test your knowledge with Quizzes</span>
 
-          <div className="flex flex-col justify-evenly w-full text-left p-5">
-            {error && (
-              <ErrorMessage>Please enter your name to proceed.</ErrorMessage>
-            )}
-            <TextField
-              style={{ marginBottom: 25, marginTop: 25 }}
-              label="Enter Your Name"
-              variant="outlined"
-              onChange={(e) => setName(e.target.value)}
-              autoFocus
-            />
-          </div>
-
-          <Button
-            variant="contained"
-            color="primary"
-            size="large"
-            onClick={handleSubmit}
+          <Formik
+            initialValues={{ name: "" }}
+            enableReinitialize
+            validationSchema={validationSchema}
+            onSubmit={handleSubmit}
           >
-            Get Started
-          </Button>
+            {({ errors, touched }) => (
+              <Form className="flex flex-col justify-evenly w-full text-left p-5">
+                <Field
+                  as={TextField}
+                  name="name"
+                  label="Enter Your Name"
+                  variant="outlined"
+                  autoFocus
+                  style={{ marginBottom: 25, marginTop: 25 }}
+                  error={touched.name && Boolean(errors.name)}
+                  helperText={touched.name && errors.name}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") e.preventDefault(); // optional
+                  }}
+                />
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  size="large"
+                >
+                  Get Started
+                </Button>
+              </Form>
+            )}
+          </Formik>
         </div>
       </div>
     </div>
