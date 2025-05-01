@@ -5,6 +5,7 @@ import Quiz from "./pages/Quiz";
 import axios from "axios";
 import Result from "./pages/Result";
 import QuizSetupForm from "./pages/QuizSetupForm";
+import { decodeHtmlEntities } from "./constants/helper";
 
 function App() {
   const [questions, setQuestions] = useState();
@@ -18,7 +19,14 @@ function App() {
       }${difficulty && `&difficulty=${difficulty}`}&type=multiple`
     );
 
-    setQuestions(data.results);
+    const decodedResults = data.results.map((q) => ({
+      ...q,
+      question: decodeHtmlEntities(q.question),
+      correct_answer: decodeHtmlEntities(q.correct_answer),
+      incorrect_answers: q.incorrect_answers.map(decodeHtmlEntities),
+    }));
+
+    setQuestions(decodedResults);
   };
 
   return (
