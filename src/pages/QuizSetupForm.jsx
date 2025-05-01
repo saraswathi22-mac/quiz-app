@@ -57,13 +57,8 @@ const QuizSetupForm = ({ name, fetchQuestions }) => {
           onSubmit={handleSubmit}
         >
           {({ errors, touched }) => (
-            <Form className="flex flex-col justify-evenly text-left p-10 w-[60%]">
-              {/* {(errors.category || errors.difficulty) &&
-                (touched.category || touched.difficulty) && (
-                  <ErrorMessage>Please fill all the fields.</ErrorMessage>
-                )} */}
-
-              <span className="mb-5 text-xl font-bold">
+            <Form className="flex flex-col justify-evenly text-left w-full sm:w-[80%] md:w-[70%] lg:w-[60%] px-4 py-6 sm:p-10">
+              <span className="mb-4 text-lg sm:text-xl font-bold">
                 Which one will you conquer today?
               </span>
 
@@ -109,7 +104,7 @@ const QuizSetupForm = ({ name, fetchQuestions }) => {
                 variant="contained"
                 color="secondary"
                 size="large"
-                className="w-[50%] self-center"
+                className="w-full sm:w-[70%] lg:w-[50%] self-center"
               >
                 Let's Go
               </Button>

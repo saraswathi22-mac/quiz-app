@@ -54,7 +54,7 @@ const Question = ({
           <div className="text-xl font-bold text-gray-500 mb-4 tracking-wide">
             Question {currQues + 1}
           </div>
-          <div className="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-400 to-purple-500 text-center mb-6">
+          <div className="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-400 to-purple-500 text-center mb-2">
             {questions[currQues]?.question}
           </div>
 
