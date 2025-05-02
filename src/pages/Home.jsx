@@ -20,13 +20,14 @@ const Home = ({ name, setName }) => {
   });
 
   const handleSubmit = (values) => {
-    setName(values.name);
-    localStorage.setItem("quizName", values.name);
+    const trimmedName = values.name.trim();
+    setName(trimmedName);
+    localStorage.setItem("quizName", trimmedName);
     navigate("/quiz-setup-form");
   };
 
   return (
-    <div className="px-4 py-10 md:px-10 lg:px-16">
+    <div className="max-w-5xl mx-auto px-4 py-10 md:px-10 lg:px-16">
       <Header />
 
       <div className="flex flex-col lg:flex-row justify-around items-center">
@@ -36,9 +37,9 @@ const Home = ({ name, setName }) => {
             className="w-4/5 max-w-sm mb-4"
             alt="Quiz Illustration"
           />
-          <span className="text-lg md:text-xl text-center">
+          <h1 className="text-lg md:text-xl text-center">
             Test your knowledge with Quizzes
-          </span>
+          </h1>
 
           <Formik
             initialValues={{ name: "" }}
@@ -58,7 +59,7 @@ const Home = ({ name, setName }) => {
                   error={touched.name && Boolean(errors.name)}
                   helperText={touched.name && errors.name}
                   onKeyDown={(e) => {
-                    if (e.key === "Enter") e.preventDefault(); // optional
+                    if (e.key === "Enter") e.preventDefault();
                   }}
                 />
                 <Button
@@ -66,7 +67,7 @@ const Home = ({ name, setName }) => {
                   variant="contained"
                   color="primary"
                   size="large"
-                  className="self-center"
+                  className="self-center transition-transform duration-200 hover:scale-105"
                 >
                   Get Started
                 </Button>
