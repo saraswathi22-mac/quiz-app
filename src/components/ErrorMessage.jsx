@@ -1,8 +1,11 @@
 import React from "react";
 
-const ErrorMessage = ({ children }) => {
+const ErrorMessage = ({ children, className = "" }) => {
   return (
-    <div className="w-full bg-red-500 text-center text-white capitalize p-3 rounded">
+    <div
+      role="alert"
+      className={`w-full bg-red-500 text-center text-white capitalize p-3 rounded-md shadow-sm ${className}`}
+    >
       {children}
     </div>
   );
