@@ -1,5 +1,6 @@
+const textarea = document.createElement("textarea");
+
 export const decodeHtmlEntities = (str) => {
-  const txt = document.createElement("textarea");
-  txt.innerHTML = str;
-  return txt.value;
+  textarea.innerHTML = str;
+  return textarea.value;
 };
