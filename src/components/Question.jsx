@@ -40,7 +40,7 @@ const Question = ({
     } else if (selected) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setSelected();
-      setError(false); 
+      setError(false);
     } else setError("Please select an option first");
   };
 
@@ -70,10 +70,11 @@ const Question = ({
             {options &&
               options.map((i) => (
                 <button
-                  className={`m-2 py-4 px-6 w-full md:w-[55%] text-lg font-semibold rounded-full shadow-md border-2 transition-all  ease-in-out border-transparent hover:scale-105  
-          hover:bg-gradient-to-r hover:from-green-400 hover:to-blue-500 focus:outline-none focus:ring-blue-300 ${
-            selected && handleSelect(i)
-          }`}
+                  className={`m-2 py-4 px-6 w-full md:w-[55%] text-lg font-semibold rounded-full shadow-md border-2 transition-all  ease-in-out border-transparent focus:outline-none focus:ring-blue-300 ${
+                    !selected
+                      ? "hover:scale-105 hover:bg-gradient-to-r hover:from-green-400 hover:to-blue-500"
+                      : ""
+                  } ${selected && handleSelect(i)}`}
                   key={i}
                   onClick={() => handleCheck(i)}
                   disabled={selected}
