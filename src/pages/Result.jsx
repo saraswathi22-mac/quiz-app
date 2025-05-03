@@ -34,7 +34,7 @@ const Result = ({ name, score }) => {
         variant="contained"
         color="primary"
         size="large"
-        className="self-center"
+        className="self-center transition-transform duration-200 hover:scale-105"
         onClick={() => navigate("/")}
       >
         Back to Home
