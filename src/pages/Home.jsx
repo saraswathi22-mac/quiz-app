@@ -34,7 +34,7 @@ const Home = ({ name, setName }) => {
         <div className="flex flex-col items-center p-4 w-full lg:w-[45%] font-light font-serif">
           <img
             src="quiz-main.png"
-            className="w-4/5 max-w-sm mb-4 bg-gray-200 animate-pulse"
+            className="w-4/5 max-w-sm mb-4"
             alt="Quiz Illustration"
             loading="lazy"
           />
