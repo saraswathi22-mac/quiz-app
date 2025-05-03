@@ -1,7 +1,6 @@
 import { Button } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ErrorMessage from "./ErrorMessage";
 
 const Question = ({
   currentQuestionIndex,
@@ -66,7 +65,6 @@ const Question = ({
           </div>
 
           <div className="flex w-full items-center justify-around flex-1 flex-wrap m-4 gap-5">
-            {error && <ErrorMessage>{error}</ErrorMessage>}
             {options &&
               options.map((i) => (
                 <button
