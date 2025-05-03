@@ -34,8 +34,9 @@ const Home = ({ name, setName }) => {
         <div className="flex flex-col items-center p-4 w-full lg:w-[45%] font-light font-serif">
           <img
             src="quiz-main.png"
-            className="w-4/5 max-w-sm mb-4"
+            className="w-4/5 max-w-sm mb-4 bg-gray-200 animate-pulse"
             alt="Quiz Illustration"
+            loading="lazy"
           />
           <h1 className="text-lg md:text-xl text-center">
             Test your knowledge with Quizzes
